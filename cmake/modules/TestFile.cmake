@@ -10,7 +10,9 @@ macro(llvm_test_run)
     set(TESTSCRIPT "" PARENT_SCOPE)
   endif()
   if(DEFINED ARGS_WORKDIR)
-    set(ARGS_EXECUTABLE "cd ${ARGS_WORKDIR} ; ${ARGS_EXECUTABLE}")
+    set(ARGS_EXECUTABLE "cd ${ARGS_WORKDIR} ; ${LAUNCH_SCRIPT} ${ARGS_EXECUTABLE}")
+  else()
+    set(ARGS_EXECUTABLE " ${LAUNCH_SCRIPT} ${ARGS_EXECUTABLE}")
   endif()
   # ARGS_UNPARSED_ARGUMENTS is a semicolon-separated list. Change it into a
   # whitespace-separated string.
