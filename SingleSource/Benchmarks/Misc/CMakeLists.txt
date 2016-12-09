@@ -29,4 +29,10 @@ set(Source
 if(NOT ARCH STREQUAL "PowerPC" OR NOT TARGET_OS STREQUAL "Darwin")
   list(APPEND Source dt.c)
 endif()
+
+if(ARCH STREQUAL "ARC")
+    list(REMOVE_ITEM Source dt.c)
+    list(REMOVE_ITEM Source courafft.c)
+    list(REMOVE_ITEM Source oourafft.c)
+endif()
 llvm_singlesource()
