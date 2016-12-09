@@ -1,6 +1,10 @@
-add_subdirectory(C++11)
+if(NOT ARCH STREQUAL "ARC")
+   add_subdirectory(C++11)
+endif()
 add_subdirectory(SignlessTypes)
-add_subdirectory(Threads)
+if(NOT ARCH STREQUAL "ARC")
+    add_subdirectory(Threads)
+endif()
 add_subdirectory(Vector)
 add_subdirectory(Vectorizer)
 # FIXME: Disable SJLJ tests for now, until EH edges are represented.
@@ -42,5 +46,9 @@ if(NOT ARCH STREQUAL "x86")
     ms_struct_pack_layout.c
     ms_struct_pack_layout-1.c
   )
+endif()
+if(ARCH STREQUAL "ARC")
+    list(REMOVE_ITEM Source AtomicOps.c)
+    list(REMOVE_ITEM Source 2007-04-25-weak.c)
 endif()
 llvm_singlesource()
