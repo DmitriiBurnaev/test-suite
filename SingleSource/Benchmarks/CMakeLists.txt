@@ -1,4 +1,6 @@
-add_subdirectory(Adobe-C++)
+if(NOT ARCH STREQUAL "ARC")
+    add_subdirectory(Adobe-C++)
+endif()    
 add_subdirectory(BenchmarkGame)
 add_subdirectory(CoyoteBench)
 add_subdirectory(Dhrystone)
