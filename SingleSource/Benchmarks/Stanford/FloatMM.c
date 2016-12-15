@@ -41,6 +41,15 @@ type */
     /* Perm */
 #define permrange     10
 
+/* Change the quantity of execution 'for' loop for ARC CPUs. Generally
+it equals 5000, but for ARC it equals 41. It make possibly to run this 
+test for bare-metal on nSIM. Otherwise it takes long hours to finish it.*/
+#ifdef __arc__
+    #define ITERATION_NUMBER    41
+#else
+    #define ITERATION_NUMBER    5000
+#endif
+
    /* tree */
 struct node {
 	struct node *left,*right;
@@ -155,6 +164,6 @@ void Mm (int run)    {
 int main()
 {
 	int i;
-	for (i = 0; i < 5000; i++) Mm(i);
+	for (i = 0; i < ITERATION_NUMBER; i++) Mm(i);
 	return 0;
 }
