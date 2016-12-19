@@ -1,5 +1,7 @@
 add_subdirectory(city)
-add_subdirectory(employ)
+if(NOT ARCH STREQUAL "ARC")
+    add_subdirectory(employ)
+endif()
 add_subdirectory(life)
 add_subdirectory(ocean)
 add_subdirectory(primes)
