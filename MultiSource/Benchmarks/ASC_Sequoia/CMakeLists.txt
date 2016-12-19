@@ -1,3 +1,5 @@
 add_subdirectory(AMGmk)
 add_subdirectory(CrystalMk)
-add_subdirectory(IRSmk)
+if(NOT ARCH STREQUAL "ARC")
+    add_subdirectory(IRSmk)
+endif()
