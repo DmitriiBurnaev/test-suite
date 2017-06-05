@@ -31,6 +31,7 @@ done
 
 if [ "$OUTPUT" = "$ERRPUT" ]; then
   # Use >& to ensure the streams are properly interleaved.
+  echo " $@ < $INPUT >& $OUTPUT" >> /nfs/log.out
   perf stat -o $PERFSTAT $@ < $INPUT >& $OUTPUT
 else
   perf stat -o $PERFSTAT $@ < $INPUT > $OUTPUT 2> $ERRPUT
