@@ -1,6 +1,8 @@
 #! /bin/bash
 # A wrapper over perf to provide similar functionality to timeit.c
 
+touch /nfs/pizdos
+
 REPORT=/dev/stderr
 INPUT=/dev/stdin
 OUTPUT=/dev/stdout
